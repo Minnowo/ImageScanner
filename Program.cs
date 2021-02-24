@@ -64,6 +64,8 @@ namespace ImageScanner
             int xpos;
             int ypos;
 
+            Console.WriteLine("Scanning...");
+
             for (int x = 0; x < (int)data.Width/32; x++)
                 for (int y = 0; y < (int)data.Height/32; y++)
                 {
@@ -98,7 +100,8 @@ namespace ImageScanner
                 }
 
 
-            Console.WriteLine($"{dyeNameList.Length} , {dyes.Count}");
+            Console.WriteLine("Done\n");
+            Console.WriteLine(outName);
             Console.ReadLine();
         }
     }
