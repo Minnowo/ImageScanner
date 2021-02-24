@@ -61,8 +61,8 @@ namespace ImageScanner
             Bitmap data = (Bitmap)Bitmap.FromFile(fileName);
 
             int count = 0;
-            int xpos;
-            int ypos;
+            int xpos = 0;
+            int ypos = 0;
 
             Console.WriteLine("Scanning...");
 
@@ -75,7 +75,7 @@ namespace ImageScanner
                         for (int ii = 0; ii < 32; ii++)
                         {
                             ypos = ii + (32 * y);
-                            outputList.Add(dyeNameList[closestColor2(dyes, data.GetPixel(i, ii))]);
+                            outputList.Add(dyeNameList[closestColor2(dyes, data.GetPixel(xpos, ypos))]);
                         }
                     }
                     
