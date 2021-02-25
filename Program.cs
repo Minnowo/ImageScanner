@@ -61,8 +61,8 @@ namespace ImageScanner
             Bitmap data = (Bitmap)Bitmap.FromFile(fileName);
 
             int count = 0;
-            int xpos = 0;
-            int ypos = 0;
+            int xpos;
+            int ypos;
 
             Console.WriteLine("Scanning...");
 
@@ -82,13 +82,17 @@ namespace ImageScanner
                     count++;
                     using (StreamWriter w = File.AppendText(outName))
                     {
-                        w.WriteLine($"\n|${count}$|");
-                        int loopNums = 0;
+                        if(count == 1)
+                            w.WriteLine($"|${count}$|");
+                        else
+                            w.WriteLine($"\n\n\n|${count}$|");
+
+                        int loopNums = 1;
                         foreach (string col in outputList)
                         {
                             if (loopNums == 32)
                             {
-                                w.Write($" | {col} \n");
+                                w.Write($" | {col} \n\n");
                                 loopNums = 0;
                             }
                             else
