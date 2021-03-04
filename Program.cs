@@ -4,6 +4,7 @@ using System.Drawing;
 using System.Drawing.Imaging;
 using System.IO;
 using System.Linq;
+using System.Windows.Forms;
 
 namespace ImageScanner
 {
@@ -31,6 +32,9 @@ namespace ImageScanner
                 return (Bitmap)Image.FromStream(fileStream, false, false);
             }
         }
+
+        
+
         static void Main(string[] args)
         {
             string fileName;
@@ -85,18 +89,24 @@ namespace ImageScanner
                         if(count == 1)
                             w.WriteLine($"|${count}$|");
                         else
-                            w.WriteLine($"\n\n\n|${count}$|");
+                            w.WriteLine($"\n\n|${count}$|");
 
                         int loopNums = 1;
                         foreach (string col in outputList)
                         {
                             if (loopNums == 32)
                             {
-                                w.Write($" | {col} \n\n");
+                                w.Write($"|{col}\n");
                                 loopNums = 0;
                             }
+                            else if(loopNums == 1)
+                            {
+                                w.Write($"{col}");
+                            }
                             else
-                                w.Write($" | {col}");
+                            {
+                                w.Write($"|{col}");
+                            }  
                             loopNums++;
                         }
                     }
